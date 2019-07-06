@@ -1,0 +1,9 @@
+{
+    "name": "COMP1805App",
+    "version": "1.0.0",
+    "private": true,
+    "dependencies": {
+        "pdfjs": "^2.3.0",
+        "pdfjs-dist": "^2.0.943"
+    }
+}
