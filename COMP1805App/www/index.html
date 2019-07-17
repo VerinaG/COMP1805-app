@@ -1,51 +1,72 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
+<head>
     <!--
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>COMP1805App</title>
+    <!--
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    -->
 
-        <!--PDF.js-->
-        <script src="../../node_modules/pdfjs-dist/build/pdf.js"></script>
-        <script src="scripts/index.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>COMP1805App</title>
 
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+    <!--JQuery-->
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>src = "../../node_modules/cordova-jquery/js/jquery-1.11.1.min.js"</script>
+    <script>src = "../../node_modules/cordova-jquery/js/jquery-1.5.0.mobile.min.js"</script>
+
+    <!--PDF.js-->
+    <script src="../../node_modules/pdfjs-dist/build/pdf.js"></script>
+    <script src="scripts/index.js"></script>
+
+</head>
+<body>
+    <div class="app">
+        <h1>Verina Georgy</h1>
+        <div id="deviceready">
+            <div>
+                <!--Single PDF-->
+                <button id="singleView" class="inline" onclick="document.getElementById('file-input').click()">View PDF</button>
+                <input id="file-input" type="file" name="name" style="display: none;" />
+                <div id="pdf-viewer"></div>
+
+                <!--Left PDF-->
+                <button id="leftView" class="inline" onclick="document.getElementById('file-input-left').click()">View Left</button>
+                <input id="file-input-left" type="file" name="name" style="display: none;" />
+                <div id="pdf-left"></div>
+
+                <!--Right PDF-->
+                <button id="rightView" class="inline" onclick="document.getElementById('file-input-right').click()">View Right</button>
+                <input id="file-input-right" type="file" name="name" style="display: none;" />
+                <div id="pdf-right"></div>
             </div>
         </div>
+    </div>
 
-
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script type="text/javascript" src="scripts/index.js"></script>
-
-        <!--TEST-->
-        <!--<button id="singleView">View PDF</button>-->
-        <!--<button id="singleView" onclick="location.href='index.html#singlePDF'">View PDF</button>-->
-        <button id="singleView" onclick="document.getElementById('file-input').click(); document.getElementById('page2')">View PDF</button>
+    <!--
+    <div id="page1" data-role="page">
+        <div id="deviceready"></div>
+        <button id="singleView" onclick="document.getElementById('file-input').click(); location.href='index.html#page2'">View PDF</button>
         <input id="file-input" type="file" name="name" style="display: none;" />
-        <!--<canvas id="the-canvas"></canvas>-->
+    </div>
+    -->
 
-        <div id="page2">
-            <div id="pdf-viewer"></div>
-        </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+
+    <!--Button - Single PDF View-->
+    <!--<button id="singleView" onclick="location.href='index.html#singlePDF'">View PDF</button>-->
 
 
-        <!--VIEW PDF-->
-        <!--<a href="/web/viewer.html?file=test.pdf">VIEW PDF</a>-->
-    </body>
+    <!--Annotation Layer-->
+    <!--<canvas id="canvasDiv"></canvas>-->
+    
+</body>
 </html>

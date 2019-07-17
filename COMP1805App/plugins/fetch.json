@@ -1,10 +1,26 @@
 {
-    "cordova-plugin-whitelist": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-whitelist@1.2.2"
-        },
-        "is_top_level": true,
-        "variables": {}
-    }
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1.2.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "pspdfkit-cordova-android": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/PSPDFKit/Cordova-Android.git"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-enable-multidex": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/PSPDFKit-labs/cordova-plugin-enable-multidex.git"
+    },
+    "is_top_level": false,
+    "variables": {}
+  }
 }
