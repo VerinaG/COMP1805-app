@@ -77,11 +77,22 @@
             var fileReader = new FileReader();
 
             fileReader.onload = function () {
-                var typedarray = new Uint8Array(this.result);
+                PSPDFKit.load({
+                    container: "#pdf-viewer",
+                    pdf: this.result,
+                    licenseKey: "WM8jN50JgP0ymdTPY_dPRHuXjArwjM3CMH00jb27MIce11B6gT6i5wop01lmO4E6Xht55yRQqE3_c_xqGhkuB9rjbAHPY7FVwu7MQzaQ1r_q3X-4MCeX1SzMEnxcL0Vo_mg01lnosg11_DCNjntg_IoF8JiZNKnbdwdR01fmJN--pvAKPkbXExEOw51lw9ONfN9Auk7bto-GkV3sdbuy0yCLyZdzwyGcs9HMafl40eM9GH7VLbDd_4OQoc4WkynyaSZUFZ3hiCzSCcsql2W2DTFXz2L2vEGKZuA0WkWACQrM3n6w3suK2CLP-MS0U0UaxycKHHl_EVh_ui17qjUbp-ImNMT6UmJwOu8eQ30yAWzDLZgX2sxDljYHmttLvE_8dgogkjy7IapycYDLnhkMe3jja7noMTQXKPvC0U6Q9N1WHtj5S_Mpdd95y2G1iyNh"
+                })
+                    .then(function (instance) {
+                        instance.totalPageCount; // => 10
 
-                var thePDF = null;
-                var scale = 1;
-
+                        const viewState = instance.viewState;
+                        viewState.currentPageIndex; // => 0
+                        instance.setViewState(viewState.set("currentPageIndex", 0));
+                    })
+                    .catch(function (error) {
+                        console.error(error.message);
+                    });
+                /*
                 //Displaying PDF
                 pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
                     thePDF = pdf;
@@ -104,6 +115,7 @@
                         page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport });
                     });
                 };
+                */
             };
 
             fileReader.readAsArrayBuffer(file);
@@ -120,16 +132,28 @@
 
             var fileReader = new FileReader();
 
+
             fileReader.onload = function () {
-                var typedarray = new Uint8Array(this.result);
+                PSPDFKit.load({
+                    container: "#pdf-left",
+                    pdf: this.result,
+                    licenseKey: "WM8jN50JgP0ymdTPY_dPRHuXjArwjM3CMH00jb27MIce11B6gT6i5wop01lmO4E6Xht55yRQqE3_c_xqGhkuB9rjbAHPY7FVwu7MQzaQ1r_q3X-4MCeX1SzMEnxcL0Vo_mg01lnosg11_DCNjntg_IoF8JiZNKnbdwdR01fmJN--pvAKPkbXExEOw51lw9ONfN9Auk7bto-GkV3sdbuy0yCLyZdzwyGcs9HMafl40eM9GH7VLbDd_4OQoc4WkynyaSZUFZ3hiCzSCcsql2W2DTFXz2L2vEGKZuA0WkWACQrM3n6w3suK2CLP-MS0U0UaxycKHHl_EVh_ui17qjUbp-ImNMT6UmJwOu8eQ30yAWzDLZgX2sxDljYHmttLvE_8dgogkjy7IapycYDLnhkMe3jja7noMTQXKPvC0U6Q9N1WHtj5S_Mpdd95y2G1iyNh"
+                })
+                    .then(function (instance) {
+                        instance.totalPageCount; // => 10
 
-                var thePDF = null;
-                var scale = 1;
-
+                        const viewState = instance.viewState;
+                        viewState.currentPageIndex; // => 0
+                        instance.setViewState(viewState.set("currentPageIndex", 0));
+                    })
+                    .catch(function (error) {
+                        console.error(error.message);
+                    });
+                /*
                 //Displaying PDF
                 pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
                     thePDF = pdf;
-                    var viewer = document.getElementById('pdf-left');
+                    var viewer = document.getElementById('pdf-viewer');
 
                     for (var page = 1; page <= pdf.numPages; page++) {
                         var canvas = document.createElement("canvas");
@@ -148,10 +172,11 @@
                         page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport });
                     });
                 };
+                */
             };
 
             fileReader.readAsArrayBuffer(file);
-        }
+        }  
     };
 
     //View right PDF
@@ -165,15 +190,26 @@
             var fileReader = new FileReader();
 
             fileReader.onload = function () {
-                var typedarray = new Uint8Array(this.result);
+                PSPDFKit.load({
+                    container: "#pdf-right",
+                    pdf: this.result,
+                    licenseKey: "WM8jN50JgP0ymdTPY_dPRHuXjArwjM3CMH00jb27MIce11B6gT6i5wop01lmO4E6Xht55yRQqE3_c_xqGhkuB9rjbAHPY7FVwu7MQzaQ1r_q3X-4MCeX1SzMEnxcL0Vo_mg01lnosg11_DCNjntg_IoF8JiZNKnbdwdR01fmJN--pvAKPkbXExEOw51lw9ONfN9Auk7bto-GkV3sdbuy0yCLyZdzwyGcs9HMafl40eM9GH7VLbDd_4OQoc4WkynyaSZUFZ3hiCzSCcsql2W2DTFXz2L2vEGKZuA0WkWACQrM3n6w3suK2CLP-MS0U0UaxycKHHl_EVh_ui17qjUbp-ImNMT6UmJwOu8eQ30yAWzDLZgX2sxDljYHmttLvE_8dgogkjy7IapycYDLnhkMe3jja7noMTQXKPvC0U6Q9N1WHtj5S_Mpdd95y2G1iyNh"
+                })
+                    .then(function (instance) {
+                        instance.totalPageCount; // => 10
 
-                var thePDF = null;
-                var scale = 1;
-
+                        const viewState = instance.viewState;
+                        viewState.currentPageIndex; // => 0
+                        instance.setViewState(viewState.set("currentPageIndex", 0));
+                    })
+                    .catch(function (error) {
+                        console.error(error.message);
+                    });
+                /*
                 //Displaying PDF
                 pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
                     thePDF = pdf;
-                    var viewer = document.getElementById('pdf-right');
+                    var viewer = document.getElementById('pdf-viewer');
 
                     for (var page = 1; page <= pdf.numPages; page++) {
                         var canvas = document.createElement("canvas");
@@ -192,10 +228,12 @@
                         page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport });
                     });
                 };
+                */
             };
 
             fileReader.readAsArrayBuffer(file);
-        }
+        }  
+
     };
 
     function onPause() {
