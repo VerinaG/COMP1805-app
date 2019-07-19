@@ -1,22 +1,22 @@
 {
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {}
-  },
-  "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.cordova.myappfb18ee"
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
     },
-    "pspdfkit-cordova-android": {
-      "PACKAGE_NAME": "io.cordova.myappfb18ee"
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.cordova.myappfb18ee"
+        },
+        "pspdfkit-cordova-android": {
+            "PACKAGE_NAME": "io.cordova.myappfb18ee"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-enable-multidex": {
+            "PACKAGE_NAME": "io.cordova.myappfb18ee"
+        }
     }
-  },
-  "dependent_plugins": {
-    "cordova-plugin-enable-multidex": {
-      "PACKAGE_NAME": "io.cordova.myappfb18ee"
-    }
-  }
 }
