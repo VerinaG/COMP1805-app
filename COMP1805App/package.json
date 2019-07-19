@@ -1,14 +1,31 @@
 {
-    "name": "COMP1805App",
-    "version": "1.0.0",
-    "private": true,
-    "dependencies": {
-        "cordova-jquery": "^0.1.6",
-        "cordova-plugin-enable-multidex": "git+https://github.com/PSPDFKit-labs/cordova-plugin-enable-multidex.git",
-        "jquery": "^3.4.1",
-        "pdfjs": "^2.3.0",
-        "pdfjs-dist": "^2.0.943",
-        "pspdfkit": "https://customers.pspdfkit.com/npm/TRIAL-ntNDRH2LK0UaHaeJhxHM9Mgy3T5C8oC7CoOPC5ZTQ54TccuIaO4lnrWvaJH_cZzZRG55PWmzfcRMFyxWw7AyQw/latest.tar.gz",
-        "pspdfkit-cordova-android": "git+https://github.com/PSPDFKit/Cordova-Android.git"
-    }
+  "name": "COMP1805App",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "cordova-android": "^8.0.0",
+    "cordova-jquery": "^0.1.6",
+    "cordova-plugin-enable-multidex": "git+https://github.com/PSPDFKit-labs/cordova-plugin-enable-multidex.git",
+    "jquery": "^3.4.1",
+    "pdfjs": "^2.3.0",
+    "pdfjs-dist": "^2.0.943",
+    "pspdfkit": "https://customers.pspdfkit.com/npm/TRIAL-ntNDRH2LK0UaHaeJhxHM9Mgy3T5C8oC7CoOPC5ZTQ54TccuIaO4lnrWvaJH_cZzZRG55PWmzfcRMFyxWw7AyQw/latest.tar.gz",
+    "pspdfkit-cordova-android": "git+https://github.com/PSPDFKit/Cordova-Android.git",
+    "cordova-ios": "4.2.0",
+    "cordova-windows": "4.4.2"
+  },
+  "cordova": {
+    "plugins": {
+      "pspdfkit-cordova-android": {},
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "android",
+      "ios",
+      "windows"
+    ]
+  },
+  "devDependencies": {
+    "cordova-plugin-whitelist": "1.2.2"
+  }
 }

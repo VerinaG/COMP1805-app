@@ -27,6 +27,42 @@
         document.getElementById("rightView").addEventListener("click", viewRightPdf);
 
         pdfjsLib.GlobalWorkerOptions.workerSrc = '../../node_modules/pdfjs-dist/build/pdf.worker.js';
+
+        /*
+        //PSPDFKIT trial
+        var document = new PdfDocument;
+
+        try {
+            // Use this Uri format to access files inside your app's assets.
+            var documentUri = new Uri;
+            documentUri = Uri.parse("test.pdf");
+
+            // This synchronously opens the document. To keep your app UI responsive, you should do this call
+            // on a background thread, or use the asynchronous version of this method instead.
+            document = PdfDocumentLoder.openDocument(context, documentUri);
+        } catch (IOException e) {
+            handleDocumentLoadingError(e);
+        }
+
+        final int pageIndex = 0;
+        // Page size is in PDF points (not pixels).
+        final Size pageSize = document.getPageSize(pageIndex);
+        // We define a target width for the resulting bitmap and use it to calculate the final height.
+        final int width = 2048;
+        final int height = (int)(pageSize.height * (width / pageSize.width));
+
+        // This will render the first page uniformly into a bitmap with a width of 2,048 pixels.
+        final Bitmap pageBitmap = document.renderPageToBitmap(context, pageIndex, width, height);
+
+
+        /*PSPDFKit.showDocumentFromAssets("www/documents/test.pdf", {
+            title: "My PDF Document",
+            page: 0,
+            scrollDirection: PSPDFKit.PageScrollDirection.VERTICAL,
+            scrollMode: PSPDFKit.ScrollMode.CONTINUOUS,
+            useImmersiveMode: true
+        });*/
+
     };
 
     
