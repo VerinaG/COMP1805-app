@@ -27,47 +27,18 @@
         document.getElementById("rightView").addEventListener("click", viewRightPdf);
 
         pdfjsLib.GlobalWorkerOptions.workerSrc = '../../node_modules/pdfjs-dist/build/pdf.worker.js';
-
-        /*
-        //PSPDFKIT trial
-        var document = new PdfDocument;
-
-        try {
-            // Use this Uri format to access files inside your app's assets.
-            var documentUri = new Uri;
-            documentUri = Uri.parse("test.pdf");
-
-            // This synchronously opens the document. To keep your app UI responsive, you should do this call
-            // on a background thread, or use the asynchronous version of this method instead.
-            document = PdfDocumentLoder.openDocument(context, documentUri);
-        } catch (IOException e) {
-            handleDocumentLoadingError(e);
-        }
-
-        final int pageIndex = 0;
-        // Page size is in PDF points (not pixels).
-        final Size pageSize = document.getPageSize(pageIndex);
-        // We define a target width for the resulting bitmap and use it to calculate the final height.
-        final int width = 2048;
-        final int height = (int)(pageSize.height * (width / pageSize.width));
-
-        // This will render the first page uniformly into a bitmap with a width of 2,048 pixels.
-        final Bitmap pageBitmap = document.renderPageToBitmap(context, pageIndex, width, height);
-
-
-        /*PSPDFKit.showDocumentFromAssets("www/documents/test.pdf", {
-            title: "My PDF Document",
-            page: 0,
-            scrollDirection: PSPDFKit.PageScrollDirection.VERTICAL,
-            scrollMode: PSPDFKit.ScrollMode.CONTINUOUS,
-            useImmersiveMode: true
-        });*/
-
     };
 
     
     //View single PDF
     function viewSinglePdf() {
+        //Create container
+        var pdfCenter = document.createElement("pdfCenter");
+        pdfCenter.style.width = "100%";
+        pdfCenter.style.height = "100%";
+        pdfCenter.style.position = "absolute";
+
+        document.body.appendChild(pdfCenter);
 
         //Waiting for file to be chosen in browse dialog box
         document.getElementById("file-input").onchange = function (event) {
@@ -78,9 +49,10 @@
 
             fileReader.onload = function () {
                 PSPDFKit.load({
-                    container: "#pdf-viewer",
+                    container: pdfCenter,
                     pdf: this.result,
-                    licenseKey: "WM8jN50JgP0ymdTPY_dPRHuXjArwjM3CMH00jb27MIce11B6gT6i5wop01lmO4E6Xht55yRQqE3_c_xqGhkuB9rjbAHPY7FVwu7MQzaQ1r_q3X-4MCeX1SzMEnxcL0Vo_mg01lnosg11_DCNjntg_IoF8JiZNKnbdwdR01fmJN--pvAKPkbXExEOw51lw9ONfN9Auk7bto-GkV3sdbuy0yCLyZdzwyGcs9HMafl40eM9GH7VLbDd_4OQoc4WkynyaSZUFZ3hiCzSCcsql2W2DTFXz2L2vEGKZuA0WkWACQrM3n6w3suK2CLP-MS0U0UaxycKHHl_EVh_ui17qjUbp-ImNMT6UmJwOu8eQ30yAWzDLZgX2sxDljYHmttLvE_8dgogkjy7IapycYDLnhkMe3jja7noMTQXKPvC0U6Q9N1WHtj5S_Mpdd95y2G1iyNh"
+                    licenseKey: "WM8jN50JgP0ymdTPY_dPRHuXjArwjM3CMH00jb27MIce11B6gT6i5wop01lmO4E6Xht55yRQqE3_c_xqGhkuB9rjbAHPY7FVwu7MQzaQ1r_q3X-4MCeX1SzMEnxcL0Vo_mg01lnosg11_DCNjntg_IoF8JiZNKnbdwdR01fmJN--pvAKPkbXExEOw51lw9ONfN9Auk7bto-GkV3sdbuy0yCLyZdzwyGcs9HMafl40eM9GH7VLbDd_4OQoc4WkynyaSZUFZ3hiCzSCcsql2W2DTFXz2L2vEGKZuA0WkWACQrM3n6w3suK2CLP-MS0U0UaxycKHHl_EVh_ui17qjUbp-ImNMT6UmJwOu8eQ30yAWzDLZgX2sxDljYHmttLvE_8dgogkjy7IapycYDLnhkMe3jja7noMTQXKPvC0U6Q9N1WHtj5S_Mpdd95y2G1iyNh",
+                    printMode: PSPDFKit.PrintMode.EXPORT_PDF
                 })
                     .then(function (instance) {
                         instance.totalPageCount; // => 10
@@ -124,6 +96,14 @@
 
     //View left PDF
     function viewLeftPdf() {
+        //Create container
+        var pdfLeft = document.createElement("pdfLeft");
+        pdfLeft.style.width = "50%";
+        pdfLeft.style.height = "100%";
+        pdfLeft.style.left = "0";
+        pdfLeft.style.position = "fixed";
+
+        document.body.appendChild(pdfLeft);
 
         //Waiting for file to be chosen in browse dialog box
         document.getElementById("file-input-left").onchange = function (event) {
@@ -135,9 +115,10 @@
 
             fileReader.onload = function () {
                 PSPDFKit.load({
-                    container: "#pdf-left",
+                    container: pdfLeft,
                     pdf: this.result,
-                    licenseKey: "WM8jN50JgP0ymdTPY_dPRHuXjArwjM3CMH00jb27MIce11B6gT6i5wop01lmO4E6Xht55yRQqE3_c_xqGhkuB9rjbAHPY7FVwu7MQzaQ1r_q3X-4MCeX1SzMEnxcL0Vo_mg01lnosg11_DCNjntg_IoF8JiZNKnbdwdR01fmJN--pvAKPkbXExEOw51lw9ONfN9Auk7bto-GkV3sdbuy0yCLyZdzwyGcs9HMafl40eM9GH7VLbDd_4OQoc4WkynyaSZUFZ3hiCzSCcsql2W2DTFXz2L2vEGKZuA0WkWACQrM3n6w3suK2CLP-MS0U0UaxycKHHl_EVh_ui17qjUbp-ImNMT6UmJwOu8eQ30yAWzDLZgX2sxDljYHmttLvE_8dgogkjy7IapycYDLnhkMe3jja7noMTQXKPvC0U6Q9N1WHtj5S_Mpdd95y2G1iyNh"
+                    licenseKey: "WM8jN50JgP0ymdTPY_dPRHuXjArwjM3CMH00jb27MIce11B6gT6i5wop01lmO4E6Xht55yRQqE3_c_xqGhkuB9rjbAHPY7FVwu7MQzaQ1r_q3X-4MCeX1SzMEnxcL0Vo_mg01lnosg11_DCNjntg_IoF8JiZNKnbdwdR01fmJN--pvAKPkbXExEOw51lw9ONfN9Auk7bto-GkV3sdbuy0yCLyZdzwyGcs9HMafl40eM9GH7VLbDd_4OQoc4WkynyaSZUFZ3hiCzSCcsql2W2DTFXz2L2vEGKZuA0WkWACQrM3n6w3suK2CLP-MS0U0UaxycKHHl_EVh_ui17qjUbp-ImNMT6UmJwOu8eQ30yAWzDLZgX2sxDljYHmttLvE_8dgogkjy7IapycYDLnhkMe3jja7noMTQXKPvC0U6Q9N1WHtj5S_Mpdd95y2G1iyNh",
+                    printMode: PSPDFKit.PrintMode.EXPORT_PDF
                 })
                     .then(function (instance) {
                         instance.totalPageCount; // => 10
@@ -181,6 +162,14 @@
 
     //View right PDF
     function viewRightPdf() {
+        //Create container
+        var pdfRight = document.createElement("pdfRight");
+        pdfRight.style.width = "50%";
+        pdfRight.style.height = "100%";
+        pdfRight.style.right = "0";
+        pdfRight.style.position = "fixed";
+
+        document.body.appendChild(pdfRight);
 
         //Waiting for file to be chosen in browse dialog box
         document.getElementById("file-input-right").onchange = function (event) {
@@ -191,7 +180,7 @@
 
             fileReader.onload = function () {
                 PSPDFKit.load({
-                    container: "#pdf-right",
+                    container: pdfRight,
                     pdf: this.result,
                     licenseKey: "WM8jN50JgP0ymdTPY_dPRHuXjArwjM3CMH00jb27MIce11B6gT6i5wop01lmO4E6Xht55yRQqE3_c_xqGhkuB9rjbAHPY7FVwu7MQzaQ1r_q3X-4MCeX1SzMEnxcL0Vo_mg01lnosg11_DCNjntg_IoF8JiZNKnbdwdR01fmJN--pvAKPkbXExEOw51lw9ONfN9Auk7bto-GkV3sdbuy0yCLyZdzwyGcs9HMafl40eM9GH7VLbDd_4OQoc4WkynyaSZUFZ3hiCzSCcsql2W2DTFXz2L2vEGKZuA0WkWACQrM3n6w3suK2CLP-MS0U0UaxycKHHl_EVh_ui17qjUbp-ImNMT6UmJwOu8eQ30yAWzDLZgX2sxDljYHmttLvE_8dgogkjy7IapycYDLnhkMe3jja7noMTQXKPvC0U6Q9N1WHtj5S_Mpdd95y2G1iyNh"
                 })
