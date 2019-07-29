@@ -6,6 +6,9 @@
     "use strict";
 
     document.addEventListener('deviceready', onDeviceReady.bind(this), false);
+    var singleView = null;
+    var leftView = null;
+    var rightView = null;
 
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
@@ -32,8 +35,23 @@
     
     //View single PDF
     function viewSinglePdf() {
+        var el = document.getElementById("pdfCenter");
+        if (el !== null) {
+            el.remove();
+        }
+
+        el = document.getElementById("pdfLeft");
+        if (el !== null) {
+            el.remove();
+        }
+
+        el = document.getElementById("pdfRight");
+        if (el !== null) {
+            el.remove();
+        }
         //Create container
         var pdfCenter = document.createElement("pdfCenter");
+        pdfCenter.id = "pdfCenter";
         pdfCenter.style.width = "100%";
         pdfCenter.style.height = "100%";
         pdfCenter.style.position = "absolute";
@@ -48,6 +66,19 @@
             var fileReader = new FileReader();
 
             fileReader.onload = function () {
+                if (singleView !== null) {
+                    PSPDFKit.unload(singleView);
+                    singleview = null;
+                }
+                if (leftView !== null) {
+                    PSPDFKit.unload(leftView);
+                    leftView = null;
+                }
+                if (rightView != null) {
+                    PSPDFKit.unload(rightView);
+                    rightView = null;
+                }
+
                 PSPDFKit.load({
                     container: pdfCenter,
                     pdf: this.result,
@@ -55,6 +86,7 @@
                     printMode: PSPDFKit.PrintMode.EXPORT_PDF
                 })
                     .then(function (instance) {
+                        singleView = instance;
                         instance.totalPageCount; // => 10
 
                         const viewState = instance.viewState;
@@ -96,8 +128,18 @@
 
     //View left PDF
     function viewLeftPdf() {
+        var el = document.getElementById("pdfCenter");
+        if (el !== null) {
+            el.remove();
+        }
+
+        el = document.getElementById("pdfLeft");
+        if (el !== null) {
+            el.remove();
+        }
         //Create container
         var pdfLeft = document.createElement("pdfLeft");
+        pdfLeft.id = "pdfLeft";
         pdfLeft.style.width = "50%";
         pdfLeft.style.height = "100%";
         pdfLeft.style.left = "0";
@@ -114,6 +156,16 @@
 
 
             fileReader.onload = function () {
+                if (leftView !== null) {
+                    PSPDFKit.unload(leftView);
+                    leftView = null;
+                }
+
+                if (singleView !== null) {
+                    PSPDFKit.unload(singleView);
+                    singleView = null;
+                }
+
                 PSPDFKit.load({
                     container: pdfLeft,
                     pdf: this.result,
@@ -121,6 +173,7 @@
                     printMode: PSPDFKit.PrintMode.EXPORT_PDF
                 })
                     .then(function (instance) {
+                        leftView = instance;
                         instance.totalPageCount; // => 10
 
                         const viewState = instance.viewState;
@@ -162,8 +215,18 @@
 
     //View right PDF
     function viewRightPdf() {
+        var el = document.getElementById("pdfCenter");
+        if (el !== null) {
+            el.remove();
+        }
+
+        el = document.getElementById("pdfRight");
+        if (el !== null) {
+            el.remove();
+        }
         //Create container
         var pdfRight = document.createElement("pdfRight");
+        pdfRight.id = "pdfRight";
         pdfRight.style.width = "50%";
         pdfRight.style.height = "100%";
         pdfRight.style.right = "0";
@@ -179,6 +242,15 @@
             var fileReader = new FileReader();
 
             fileReader.onload = function () {
+                if (rightView !== null) {
+                    PSPDFKit.unload(rightView);
+                    rightView = null;
+                }
+
+                if (singleView !== null) {
+                    PSPDFKit.unload(singleView);
+                    singleView = null;
+                }
                 PSPDFKit.load({
                     container: pdfRight,
                     pdf: this.result,
