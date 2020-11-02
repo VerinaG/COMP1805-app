@@ -9,7 +9,7 @@ This application requires:
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) emmulator 
 * [PSPDFKit](https://pspdfkit.com/) SDK -> __Note that the trial key has expired, and therefore the application will not run as intended.__
 
-Once installed, clone the repository and clone the dependencies:
+Once installed, clone the repository and install the dependencies:
 ```bash
 $ npm install
 ```
