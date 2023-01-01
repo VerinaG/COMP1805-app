@@ -10,7 +10,7 @@
     "cordova-windows": "^4.4.2",
     "jquery": "^3.4.1",
     "pdfjs": "^2.3.0",
-    "pdfjs-dist": "^2.0.943",
+    "pdfjs-dist": "^2.16.105",
     "pspdfkit": "https://customers.pspdfkit.com/npm/TRIAL-ntNDRH2LK0UaHaeJhxHM9Mgy3T5C8oC7CoOPC5ZTQ54TccuIaO4lnrWvaJH_cZzZRG55PWmzfcRMFyxWw7AyQw/latest.tar.gz",
     "pspdfkit-cordova-android": "git+https://github.com/PSPDFKit/Cordova-Android.git"
   },
